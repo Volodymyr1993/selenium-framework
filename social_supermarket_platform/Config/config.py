@@ -5,5 +5,5 @@ class TestData:
     BASE_URL = 'https://gifting-qa.socialsupermarket.org/'
     REGISTER_LINK = 'https://gifting-qa.socialsupermarket.org/register/'
     RESET_PASSWORD_LINK = 'https://gifting-qa.socialsupermarket.org/password-reset'
-    USERNAME = 'volodymyr.tkachenko93@gmail.com'
+    USERNAME = 'automation-user@gmail.com'
     PASSWORD = 'Password123!'

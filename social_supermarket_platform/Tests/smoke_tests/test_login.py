@@ -1,4 +1,3 @@
-import Config.config
 from Tests.base import BaseTest
 from Pages.LoginPage import LoginPage
 from Config.config import TestData
@@ -19,6 +18,9 @@ class TestLogin(BaseTest):
         assert self.loginPage.is_visible(self.loginPage.COOKIE_BANNER_ACCEPT)
         assert self.loginPage.is_visible(self.loginPage.COOKIE_BANNER_DECLINE)
 
+        # Verify text is correct
+        assert self.loginPage.get_element_text(self.loginPage.LOGIN_TITLE) == 'Login'
+
         # Verify if buttons and links are clickable
         assert self.loginPage.is_clickable(self.loginPage.EMAIL_FIELD)
         assert self.loginPage.is_clickable(self.loginPage.PASSWORD_FIELD)
@@ -29,10 +31,3 @@ class TestLogin(BaseTest):
         assert self.loginPage.is_clickable(self.loginPage.COOKIE_BANNER)
         assert self.loginPage.is_clickable(self.loginPage.COOKIE_BANNER_ACCEPT)
         assert self.loginPage.is_clickable(self.loginPage.COOKIE_BANNER_DECLINE)
-
-
-
-
-    # def test_login(self):
-    #     self.loginPage = LoginPage(self.driver)
-    #     self.loginPage.do_login(TestData.USERNAME, TestData.PASSWORD)
