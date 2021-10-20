@@ -4,13 +4,13 @@ from Pages.BasePage import BasePage
 
 class PasswordResetPage(BasePage):
     """ locators - """
-    EMAIL_FIELD = (By.XPATH, '//input[@id="email"]')
-    RESET_PASSWORD_BUTTON = (By.XPATH, '//button[@class="PrimaryButton__Button-sc-1aj0s98-1 bPcAIM"]')
-    GO_BACK_BUTTON = (By.XPATH, '//a[text()="Go Back"]')
-    RESET_PASSWORD_TITLE = (By.XPATH, '//h1')
-    COOKIE_BANNER = (By.XPATH, '//div[@role="banner"]')
-    COOKIE_BANNER_ACCEPT = (By.XPATH, '//div[@role="banner"]//a[@id="hs-eu-confirmation-button"]')
-    COOKIE_BANNER_DECLINE = (By.XPATH, '//div[@role="banner"]//a[@id="hs-eu-decline-button"]')
+    EMAIL_FIELD = '//input[@id="email"]'
+    RESET_PASSWORD_BUTTON = '//button[@class="PrimaryButton__Button-sc-1aj0s98-1 bPcAIM"]'
+    GO_BACK_BUTTON = '//a[text()="Go Back"]'
+    RESET_PASSWORD_TITLE = '//h1'
+    COOKIE_BANNER = '//div[@role="banner"]'
+    COOKIE_BANNER_ACCEPT = '//div[@role="banner"]//a[@id="hs-eu-confirmation-button"]'
+    COOKIE_BANNER_DECLINE = '//div[@role="banner"]//a[@id="hs-eu-decline-button"]'
 
     ''' Constructor of the page class '''
 

@@ -4,17 +4,17 @@ from Pages.BasePage import BasePage
 
 class RegisterPage(BasePage):
     """ locators - """
-    FIRST_NAME_FIELD = (By.XPATH, '//input[@id="firstName"]')
-    LAST_NAME_FIELD = (By.XPATH, '//input[@id="lastName"]')
-    EMAIL_FIELD = (By.XPATH, '//input[@id="email"]')
-    COMPANY_FIELD = (By.XPATH, '//input[@id="company"]')
-    PASSWORD_FIELD = (By.XPATH, '//input[@id="password"]')
-    REGISTER_BUTTON = (By.XPATH, '//button[@class="PrimaryButton__Button-sc-1aj0s98-1 bPcAIM"]')
-    GO_BACK_BUTTON = (By.XPATH, '//a[text()="Go Back"]')
-    REGISTER_TITLE = (By.XPATH, '//h1')
-    COOKIE_BANNER = (By.XPATH, '//div[@role="banner"]')
-    COOKIE_BANNER_ACCEPT = (By.XPATH, '//div[@role="banner"]//a[@id="hs-eu-confirmation-button"]')
-    COOKIE_BANNER_DECLINE = (By.XPATH, '//div[@role="banner"]//a[@id="hs-eu-decline-button"]')
+    FIRST_NAME_FIELD = '//input[@id="firstName"]'
+    LAST_NAME_FIELD = '//input[@id="lastName"]'
+    EMAIL_FIELD = '//input[@id="email"]'
+    COMPANY_FIELD = '//input[@id="company"]'
+    PASSWORD_FIELD = '//input[@id="password"]'
+    REGISTER_BUTTON = '//button[@class="PrimaryButton__Button-sc-1aj0s98-1 bPcAIM"]'
+    GO_BACK_BUTTON = '//a[text()="Go Back"]'
+    REGISTER_TITLE = '//h1'
+    COOKIE_BANNER = '//div[@role="banner"]'
+    COOKIE_BANNER_ACCEPT = '//div[@role="banner"]//a[@id="hs-eu-confirmation-button"]'
+    COOKIE_BANNER_DECLINE = '//div[@role="banner"]//a[@id="hs-eu-decline-button"]'
 
     ''' Constructor of the page class '''
 
