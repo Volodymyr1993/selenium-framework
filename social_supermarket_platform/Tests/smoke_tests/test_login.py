@@ -5,6 +5,10 @@ from Config.config import TestData
 
 class TestLogin(BaseTest):
     def test_verify_all_elements_on_the_page(self):
+        """
+        This test case verify:
+         - each elements visible, clickable /login page.
+                """
         self.loginPage = LoginPage(self.driver)
 
         # Verify elements are visible at the page

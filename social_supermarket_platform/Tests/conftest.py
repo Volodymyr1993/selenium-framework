@@ -3,7 +3,7 @@ from selenium import webdriver
 from Config.config import TestData
 
 
-@pytest.fixture(params=['chrome', "firefox"], scope='class')
+@pytest.fixture(params=['chrome', "firefox"], scope='function')
 def init_driver(request):
     if request.param == 'chrome':
         web_driver = webdriver.Chrome(executable_path=TestData.CHROME_EXECUTABLE_PATH)

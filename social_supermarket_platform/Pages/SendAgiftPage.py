@@ -16,15 +16,22 @@ class SendAgift(BasePage):
     PLUS_BUTTON = '//i[@class="plus icon"][1]'
     SEARCH_ICON = '//i[@class="search icon"][1]'
     FAVORITE_ICON = '//i[@class="favorite icon"][1]'
+    NEXT_BUTTON = '//button[text()="Next"]'
+    CONTAINER_WITH_ITEMS = '//div[@class="ChoiceConfirmationPage__Items-sc-1rultpg-2 gtuYba"]'
+    ORDER_NAME_FIELD = '//input[@id="orderName"]'
+    GIFT_NOTE_FIELD = '//textarea[@id="giftNote"]'
+    CONFIRM_CHOICES_BUTTON = '//button[text()="Confirm Choices"]'
+    BACK_BUTTON = '//button[@class="LinkButton-sc-1w7z7c2-0 GiftPage__BackButton-yy63gi-1 bUuaxz pitnh"]'
 
     # Product modal
     MODAL_CLOSE_BUTTON = '//div[@class="Modal__Close-sc-10kpwz6-4 brEnYU"]'
     MODAL_TITLE = '//h1[@class="ProductModal__Title-sc-18obu0p-4 jMAsjx"]'
-    MODAL_DROP_DOWN = '//div[@class="ProductAttributeForm__Container-sc-912fkl-0 cPHjyt"]'
+    MODAL_DROP_DOWN = '//select[@id="size"]'
     MODAL_DETAILS_BUTTON = '//button[@class="PlainButton-hzadhp-0 AccordionHeader__HeaderButton-sc-33meak-1 boLGoi cOIUGB"]'
     MODAL_ABOUT_BUTTON = '//div[@class="AccordionHeader__ArrowContainer-sc-33meak-2 jVbFZJ"][1]'
     MODAL_LET_THEM_CHOOSE_BUTTON = '//button[text()="Let them Choose"]'
     MODAL_CHOOSE_TYPE_BUTTON = '//button[text()="Choose Type"]'
+    MODAL_CHOOSE_FIRST_OPTION_FROM_THE_DROP_DOWN = '//div[@class="ProductAttributeForm__Container-sc-912fkl-0 cPHjyt"]//option[2]'
 
     ''' Constructor of the page class '''
 
@@ -36,3 +43,14 @@ class SendAgift(BasePage):
     product_list = ['ACCESSORIES', 'ALCOHOLIC DRINKS', 'BATH & BEAUTY', 'CHRISTMAS HAMPERS & GIFT BOXES', 'CLOTHES',
                     'FOOD', 'GIFT BOXES', 'GIFT SETS', 'HAMPERS', 'HOME & LIVING', 'LETTERBOX GIFTS', 'WELLBEING',
                     'NON-ALCOHOLIC DRINKS']
+
+    def add_product_to_orders(self):
+        self.click(self.SEARCH_ICON)
+        self.click(self.MODAL_DROP_DOWN)
+        self.click(self.MODAL_CHOOSE_FIRST_OPTION_FROM_THE_DROP_DOWN)
+        self.click(self.MODAL_CHOOSE_TYPE_BUTTON)
+        self.click(self.NEXT_BUTTON)
+        self.send_keys(self.ORDER_NAME_FIELD, 'test')
+        self.send_keys(self.GIFT_NOTE_FIELD, 'test')
+        self.click(self.CONFIRM_CHOICES_BUTTON)
+        self.wait_till_loader_disappear()

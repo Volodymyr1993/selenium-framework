@@ -3,6 +3,10 @@ from Pages.RegisterPage import RegisterPage
 
 class TestRegisterPage(BaseTest):
     def test_verify_all_elements_on_the_register_page(self):
+        """
+        This test case verify:
+         - each elements visible, clickable /register page.
+        """
         self.registerPage = RegisterPage(self.driver)
 
         # Verify elements are visible at the page

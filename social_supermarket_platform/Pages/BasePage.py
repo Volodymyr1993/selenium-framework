@@ -58,6 +58,9 @@ class BasePage:
         element = WebDriverWait(self.driver, timeout).until(EC.element_to_be_clickable((By.XPATH, locator)))
         return bool(element)
 
+    def wait_till_loader_disappear(self, timeout=5):
+        WebDriverWait(self.driver, timeout).until_not(EC.visibility_of_element_located((By.XPATH, self.LOADER)))
+
     # def find_element(self, xpath):
     #     WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(xpath))
     #     element = WebElement.find_element(xpath)
@@ -74,8 +77,7 @@ class BasePage:
         self.send_keys(self.PASSWORD_FIELD, password)
         self.click(self.COOKIE_BANNER_DECLINE)
         self.click(self.LOGIN_BUTTON)
-        WebDriverWait(self.driver, 10).until_not(EC.visibility_of_element_located((By.XPATH, self.LOADER)))
-
+        self.wait_till_loader_disappear()
 
     # Log out from app
     def do_log_out(self):
