@@ -6,7 +6,6 @@ class TestOrdersPage(BaseTest):
         """
         This test case verify Invite TAB:
          - each elements visible, clickable at Orders page Invite TAB.
-         - each element im order is visible, clickable
          - verify each tab elements is visible, clickable
         """
         self.orders = OrdersPage(self.driver)
@@ -72,6 +71,25 @@ class TestOrdersPage(BaseTest):
         self.orders.click(self.orders.PUBLIC_SELECTION_PAGE_TOGGLE_OFF)
         self.orders.wait_till_loader_disappear()
 
+    def test_verify_all_elements_at_orders_page_products_tab(self):
+        """
+        This test case verify Invite TAB:
+         - each elements visible, clickable at Orders page Products TAB.
+         - verify each tab elements is visible, clickable
+        """
+        self.orders = OrdersPage(self.driver)
+
+        # Click at first order to open it
+        self.orders.click(self.orders.FIRST_ROW)
+        self.orders.wait_till_loader_disappear()
+
+        # Switch to Products tab
+        self.orders.click(self.orders.PRODUCTS_TAB)
+        self.orders.wait_till_loader_disappear()
+
+        assert self.orders.is_visible(self.orders.PRODUCTS_TAB_PRODUCTS_CONTAINER)
+        assert self.orders.is_visible(self.orders.PRODUCTS_TAB_UPDATE_BUTTON)
+        assert self.orders.is_visible(self.orders.PRODUCTS_TAB_UPDATE_BUTTON)
 
 
 

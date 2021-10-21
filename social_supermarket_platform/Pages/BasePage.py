@@ -1,9 +1,6 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.remote.webdriver import BaseWebDriver, WebDriver
-from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.common.by import By
-from selenium import webdriver
 
 '''This class is the parent of all Pages'''
 
@@ -24,17 +21,17 @@ class BasePage:
         self.locator = (By.XPATH, xpath)
         self.timeout = timeout
 
-    def click(self, locator, timeout=5):
+    def click(self, locator, timeout=10):
         WebDriverWait(self.driver, timeout).until(EC.visibility_of_element_located((By.XPATH, locator))).click()
 
-    def send_keys(self, locator, text, timeout=5):
+    def send_keys(self, locator, text, timeout=10):
         WebDriverWait(self.driver, timeout).until(EC.visibility_of_element_located((By.XPATH, locator))).send_keys(text)
 
-    def get_element_text(self, locator, timeout=5):
+    def get_element_text(self, locator, timeout=10):
         element = WebDriverWait(self.driver, timeout).until(EC.visibility_of_element_located((By.XPATH, locator)))
         return element.text
 
-    def is_visible(self, locator, timeout=5):
+    def is_visible(self, locator, timeout=10):
         """
         An expectation for checking that an element is present on the DOM of a page and visible.
         Visibility means that the element is not only displayed but also has a height and width that is greater than 0.
@@ -43,7 +40,7 @@ class BasePage:
         element = WebDriverWait(self.driver, timeout).until(EC.visibility_of_element_located((By.XPATH, locator)))
         return element
 
-    def get_title(self, title, timeout=5):
+    def get_title(self, title, timeout=10):
         """
         An expectation for checking that the title contains a case-sensitive substring.
         title is the fragment of title expected returns True when the title matches, False otherwise
@@ -51,14 +48,14 @@ class BasePage:
         WebDriverWait(self.driver, timeout).until(EC.title_contains((By.XPATH, title)))
         return self.driver.title
 
-    def is_clickable(self, locator, timeout=5):
+    def is_clickable(self, locator, timeout=10):
         """
         An Expectation for checking an element is visible and enabled such that you can click it.
         """
         element = WebDriverWait(self.driver, timeout).until(EC.element_to_be_clickable((By.XPATH, locator)))
         return bool(element)
 
-    def wait_till_loader_disappear(self, timeout=5):
+    def wait_till_loader_disappear(self, timeout=10):
         WebDriverWait(self.driver, timeout).until_not(EC.visibility_of_element_located((By.XPATH, self.LOADER)))
 
     # def find_element(self, xpath):

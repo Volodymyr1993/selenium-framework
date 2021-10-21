@@ -12,8 +12,6 @@ class OrdersPage(BasePage):
     EDIT_TITLE_BUTTON = '//h1//button[@class="LinkButton-sc-1w7z7c2-0 OrderPage__EditLink-c0eyda-3 bUuaxz keyDUd"]'
     REFRESH_BUTTON = '//button[@class="PrimaryButton__Button-sc-1aj0s98-1 bPcAIM OrderPage__StyledButton-c0eyda-11 jkXxpL"]'
     INVITE_TAB = '//div[@class="Tabs__Container-kudd6e-0 eINFpX"]//div[text()="Invite"]'
-    PRODUCTS_TAB = '//div[@class="Tabs__Container-kudd6e-0 eINFpX"]//div[text()="Products"]'
-    PRODUCTS_TAB_UPDATE_BUTTON = '//button[@class="PrimaryButton__Button-sc-1aj0s98-1 bPcAIM OrderItems__StyledButton-knh4f6-1 dQpQyg"]'
     PUBLIC_SELECTION_PAGE_TOGGLE_ON = '//div[@class="Toggle__Circle-h1a751-1 cvPdHh"]'
     PUBLIC_SELECTION_PAGE_TOGGLE_OFF = '//div[@class="Toggle__Circle-h1a751-1 NhBDC"]'
     INVITE_BUTTON = '//button[text()="Invite"]'
@@ -35,6 +33,11 @@ class OrdersPage(BasePage):
     INVITE_MODAL_CLOSE_BUTTON = '//div[@class="Modal__Content-sc-10kpwz6-1 gOFxnS"]//div[@class="Modal__Close-sc-10kpwz6-4 brEnYU"]'
     INVITE_MODAL_EMAILS_INPUT = '//div[@class="Modal__Content-sc-10kpwz6-1 gOFxnS"]//textarea[@class="InviteByEmailModal__Textarea-dnhv5e-4 FLAlr"]'
     INVITE_MODAL_NEXT_BUTTON = '//div[@class="Modal__Content-sc-10kpwz6-1 gOFxnS"]//button[@class="PrimaryButton__Button-sc-1aj0s98-1 bPcAIM InviteByEmailModal__StyledButton-dnhv5e-8 khOlvR"]'
+
+    # Products tab
+    PRODUCTS_TAB_PRODUCTS_CONTAINER = '//div[@class="OrderItems__Container-knh4f6-0 hUfEtj"]'
+    PRODUCTS_TAB = '//div[@class="Tabs__Container-kudd6e-0 eINFpX"]//div[text()="Products"]'
+    PRODUCTS_TAB_UPDATE_BUTTON = '//button[@class="PrimaryButton__Button-sc-1aj0s98-1 bPcAIM OrderItems__StyledButton-knh4f6-1 dQpQyg"]'
 
     def __init__(self, driver):
         super().__init__(driver)
