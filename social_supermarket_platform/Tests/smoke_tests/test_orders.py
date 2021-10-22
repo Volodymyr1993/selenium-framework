@@ -1,3 +1,5 @@
+import time
+
 from Tests.base import BaseTest
 from Pages.OrdersPage import OrdersPage
 
@@ -15,6 +17,8 @@ class TestOrdersPage(BaseTest):
         # Click at first order to open it
         self.orders.click(self.orders.FIRST_ROW)
         self.orders.wait_till_loader_disappear()
+        # Verify toggle status before test execution
+        self.orders.verify_toggle_status()
 
         assert self.orders.is_clickable(self.orders.BACK_TO_ORDERS_BUTTON)
         assert self.orders.is_visible(self.orders.BACK_TO_ORDERS_BUTTON)
@@ -27,8 +31,8 @@ class TestOrdersPage(BaseTest):
         assert self.orders.is_clickable(self.orders.INVITE_TAB)
         assert self.orders.is_visible(self.orders.PRODUCTS_TAB)
         assert self.orders.is_clickable(self.orders.PRODUCTS_TAB)
-        assert self.orders.is_visible(self.orders.PUBLIC_SELECTION_PAGE_TOGGLE_ON)
-        assert self.orders.is_clickable(self.orders.PUBLIC_SELECTION_PAGE_TOGGLE_ON)
+        assert self.orders.is_visible(self.orders.PUBLIC_SELECTION_PAGE_TOGGLE_TURN_ON)
+        assert self.orders.is_clickable(self.orders.PUBLIC_SELECTION_PAGE_TOGGLE_TURN_ON)
         assert self.orders.is_visible(self.orders.INVITE_BUTTON)
         assert self.orders.is_clickable(self.orders.INVITE_BUTTON)
         assert self.orders.is_visible(self.orders.EDIT_BUTTON)
@@ -55,8 +59,8 @@ class TestOrdersPage(BaseTest):
         assert self.orders.is_visible(self.orders.CANSEL_BUTTON)
         assert self.orders.is_clickable(self.orders.CANSEL_BUTTON)
 
-        # Turn ON toggle to verify publick link is visible
-        self.orders.click(self.orders.PUBLIC_SELECTION_PAGE_TOGGLE_ON)
+        # Turn ON toggle to verify public link is visible
+        self.orders.click(self.orders.PUBLIC_SELECTION_PAGE_TOGGLE_TURN_ON)
         self.orders.wait_till_loader_disappear()
         assert self.orders.is_clickable(self.orders.PUBLIC_LINK)
         assert self.orders.is_visible(self.orders.PUBLIC_LINK)
@@ -68,14 +72,13 @@ class TestOrdersPage(BaseTest):
         assert self.orders.is_visible(self.orders.PUBLIC_CANCEL_BUTTON)
         assert self.orders.is_clickable(self.orders.PUBLIC_CANCEL_BUTTON)
         # turn off the toggle
-        self.orders.click(self.orders.PUBLIC_SELECTION_PAGE_TOGGLE_OFF)
+        self.orders.click(self.orders.PUBLIC_SELECTION_PAGE_TOGGLE_TURN_OFF)
         self.orders.wait_till_loader_disappear()
 
     def test_verify_all_elements_at_orders_page_products_tab(self):
         """
         This test case verify Invite TAB:
          - each elements visible, clickable at Orders page Products TAB.
-         - verify each tab elements is visible, clickable
         """
         self.orders = OrdersPage(self.driver)
 
@@ -94,8 +97,7 @@ class TestOrdersPage(BaseTest):
     def test_verify_all_elements_at_orders_page_approves_tab(self):
         """
         This test case verify Invite TAB:
-         - each elements visible, clickable at Orders page Products TAB.
-         - verify each tab elements is visible, clickable
+         - each elements visible, clickable at Orders page Approval TAB.
         """
         self.orders = OrdersPage(self.driver)
 
@@ -129,6 +131,63 @@ class TestOrdersPage(BaseTest):
         assert self.orders.is_clickable(self.orders.ALL_RECIPIENTS_TAB)
         assert self.orders.is_visible(self.orders.ALL_RECIPIENTS_TABLE)
 
+    def test_verify_all_elements_at_public_selection_page(self):
+        """
+        This test case verify Invite TAB:
+         - each elements visible, clickable at Public Selection Page.
+        """
+        self.orders = OrdersPage(self.driver)
+
+        # Click at first order to open it
+        self.orders.click(self.orders.FIRST_ROW)
+        self.orders.wait_till_loader_disappear()
+
+        # Turn off toggle before test execution
+        self.orders.verify_toggle_status()
+
+        # Turn ON toggle click Public link
+        self.orders.click(self.orders.PUBLIC_SELECTION_PAGE_TOGGLE_TURN_ON)
+        self.orders.wait_till_loader_disappear()
+        self.orders.click(self.orders.PUBLIC_LINK)
+        self.orders.wait_till_loader_disappear()
+
+        # Switch to Public Link tab
+        self.driver.switch_to.window(self.driver.window_handles[1])
+        self.orders.wait_till_loader_disappear()
+
+        assert self.orders.is_visible(self.orders.PUBLIC_LINK_SUBMIT_BUTTON)
+        assert self.orders.is_clickable(self.orders.PUBLIC_LINK_SUBMIT_BUTTON)
+        assert self.orders.is_clickable(self.orders.PUBLIC_LINK_PHONE_NUMBER_FIELD)
+        assert self.orders.is_visible(self.orders.PUBLIC_LINK_PHONE_NUMBER_FIELD)
+        assert self.orders.is_visible(self.orders.PUBLIC_LINK_EMAIL_FIELD)
+        assert self.orders.is_clickable(self.orders.PUBLIC_LINK_EMAIL_FIELD)
+        assert self.orders.is_clickable(self.orders.PUBLIC_LINK_FIRST_NAME_FIELD)
+        assert self.orders.is_visible(self.orders.PUBLIC_LINK_FIRST_NAME_FIELD)
+        assert self.orders.is_clickable(self.orders.PUBLIC_LINK_LAST_NAME_FIELD)
+        assert self.orders.is_visible(self.orders.PUBLIC_LINK_LAST_NAME_FIELD)
+        assert self.orders.is_visible(self.orders.PUBLIC_LINK_POSTCODE_FIELD)
+        assert self.orders.is_clickable(self.orders.PUBLIC_LINK_POSTCODE_FIELD)
+        assert self.orders.is_clickable(self.orders.PUBLIC_LINK_ADDRESS1_FIELD)
+        assert self.orders.is_visible(self.orders.PUBLIC_LINK_ADDRESS1_FIELD)
+        # Click Add Address Line 2 to open the field
+        self.orders.click(self.orders.PUBLIC_LINK_ADDRESS2_BUTTON)
+        assert self.orders.is_visible(self.orders.PUBLIC_LINK_ADDRESS2_FIELD)
+        assert self.orders.is_clickable(self.orders.PUBLIC_LINK_ADDRESS2_FIELD)
+        # Click Add Company to open the field
+        self.orders.click(self.orders.PUBLIC_LINK_COMPANY_BUTTON)
+        assert self.orders.is_clickable(self.orders.PUBLIC_LINK_COMPANY_FIELD)
+        assert self.orders.is_visible(self.orders.PUBLIC_LINK_COMPANY_FIELD)
+        assert self.orders.is_visible(self.orders.PUBLIC_LINK_CITY_FIELD)
+        assert self.orders.is_clickable(self.orders.PUBLIC_LINK_CITY_FIELD)
+        assert self.orders.is_visible(self.orders.PUBLIC_LINK_COUNTRY_FIELD)
+
+        # Close the Public Link browser TAB
+        self.driver.close()
+
+        # Switch to Public Link tab
+        self.driver.switch_to.window(self.driver.window_handles[0])
+        # Turn off toggle Public Selection page
+        self.orders.verify_toggle_status()
 
 
 

@@ -12,8 +12,8 @@ class OrdersPage(BasePage):
     EDIT_TITLE_BUTTON = '//h1//button[@class="LinkButton-sc-1w7z7c2-0 OrderPage__EditLink-c0eyda-3 bUuaxz keyDUd"]'
     REFRESH_BUTTON = '//button[@class="PrimaryButton__Button-sc-1aj0s98-1 bPcAIM OrderPage__StyledButton-c0eyda-11 jkXxpL"]'
     INVITE_TAB = '//div[@class="Tabs__Container-kudd6e-0 eINFpX"]//div[text()="Invite"]'
-    PUBLIC_SELECTION_PAGE_TOGGLE_ON = '//div[@class="Toggle__Circle-h1a751-1 cvPdHh"]'
-    PUBLIC_SELECTION_PAGE_TOGGLE_OFF = '//div[@class="Toggle__Circle-h1a751-1 NhBDC"]'
+    PUBLIC_SELECTION_PAGE_TOGGLE_TURN_ON = '//div[@class="Toggle__Circle-h1a751-1 cvPdHh"]'
+    PUBLIC_SELECTION_PAGE_TOGGLE_TURN_OFF = '//div[@class="Toggle__Circle-h1a751-1 NhBDC"]'
     INVITE_BUTTON = '//button[text()="Invite"]'
     EDIT_BUTTON = '//div[@class="GiftNoteConfig__Container-kr6bw6-0 kIlZrQ"]//button[text()="Edit"]'
     SAVE_BUTTON = '//div[@class="GiftNoteConfig__Container-kr6bw6-0 kIlZrQ"]//button[text()="Save"]'
@@ -49,6 +49,31 @@ class OrdersPage(BasePage):
     ALL_RECIPIENTS_TAB = '//div[@class="Tabs__Button-kudd6e-3 ebKLBX"]'
     ALL_RECIPIENTS_TABLE = '//div[@class="ResponseList__Container-dhrcr0-0 gtArHw ag-theme-alpine"]'
 
+    # Pending Approval TAB
+    PENDING_APPROVAL_TAB = '//div[@class="Tabs__Button-kudd6e-3 ebKLBX"]'
+    PENDING_APPROVAL_APPROVE_BUTTON = '//button[text()="Approve"]'
+    PENDING_APPROVAL_DELETE_BUTTON = '//button[text()="Delete"]'
+    PENDING_APPROVAL_TABLE = '//div[@class="ResponseList__Container-dhrcr0-0 gtArHw ag-theme-alpine"]'
+    PENDING_APPROVAL_SELECT_ALL_CHECK_BOX = '//div[@role="columnheader"]//input[@class="ag-input-field-input ag-checkbox-input"][0]'
+    PENDING_APPROVAL_FIRST_CHECK_BOX_FROM_THE_LIST = '//div[@class="ag-center-cols-container"]//div[@role="row"]//input'
+
+    # Publick Link separate page elements
+    PUBLIC_LINK_TITLE = '//h1'
+    PUBLIC_LINK_PHONE_NUMBER_FIELD = '//input[@id="phone"]'
+    PUBLIC_LINK_EMAIL_FIELD = '//input[@id="email"]'
+    PUBLIC_LINK_FIRST_NAME_FIELD = '//input[@id="firstName"]'
+    PUBLIC_LINK_LAST_NAME_FIELD = '//input[@id="lastName"]'
+    PUBLIC_LINK_POSTCODE_FIELD = '//input[@id="postCode"]'
+    PUBLIC_LINK_ADDRESS1_FIELD = '//input[@id="address1"]'
+    PUBLIC_LINK_ADDRESS2_BUTTON = '//button[text()="Add Address Line 2"]'
+    PUBLIC_LINK_ADDRESS2_FIELD = '//input[@id="address2"]'
+    PUBLIC_LINK_COMPANY_FIELD = '//input[@id="company"]'
+    PUBLIC_LINK_COMPANY_BUTTON = '//button[text()="Add Company"]'
+    PUBLIC_LINK_CITY_FIELD = '//input[@id="city"]'
+    PUBLIC_LINK_COUNTRY_FIELD = '//input[@id="country"]'
+    PUBLIC_LINK_SUBMIT_BUTTON = '//button[text()="Submit"]'
+
+
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -56,4 +81,16 @@ class OrdersPage(BasePage):
         self.do_login(TestData.USERNAME, TestData.PASSWORD)
         self.click(self.ORDERS_PAGE)
         self.wait_till_loader_disappear()
+
+    def verify_toggle_status(self):
+        """
+        Method to verify the toggle status. In case toggle is turned on before test case we should turn it off.
+        If toggle is turned off - pass
+        :return:
+        """
+        if self.is_visible(self.PUBLIC_SELECTION_PAGE_TOGGLE_TURN_OFF):
+            self.click(self.PUBLIC_SELECTION_PAGE_TOGGLE_TURN_OFF)
+        elif self.is_visible(self.PUBLIC_SELECTION_PAGE_TOGGLE_TURN_ON):
+            pass
+
 
