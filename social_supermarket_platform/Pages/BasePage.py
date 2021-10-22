@@ -38,7 +38,7 @@ class BasePage:
         locator - used to find the element returns the WebElement once it is located and visible
         """
         element = WebDriverWait(self.driver, timeout).until(EC.visibility_of_element_located((By.XPATH, locator)))
-        return element
+        return bool(element)
 
     def get_title(self, title, timeout=10):
         """

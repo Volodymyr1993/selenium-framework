@@ -1,5 +1,4 @@
-import time
-
+import sys
 from Tests.base import BaseTest
 from Pages.OrdersPage import OrdersPage
 
@@ -94,10 +93,10 @@ class TestOrdersPage(BaseTest):
         assert self.orders.is_visible(self.orders.PRODUCTS_TAB_UPDATE_BUTTON)
         assert self.orders.is_visible(self.orders.PRODUCTS_TAB_UPDATE_BUTTON)
 
-    def test_verify_all_elements_at_orders_page_approves_tab(self):
+    def test_verify_all_elements_at_all_recipients_tab(self):
         """
-        This test case verify Invite TAB:
-         - each elements visible, clickable at Orders page Approval TAB.
+        This test case verify All Recipients TAB:
+         - each elements visible, clickable at All Recipients TAB.
         """
         self.orders = OrdersPage(self.driver)
 
@@ -133,7 +132,6 @@ class TestOrdersPage(BaseTest):
 
     def test_verify_all_elements_at_public_selection_page(self):
         """
-        This test case verify Invite TAB:
          - each elements visible, clickable at Public Selection Page.
         """
         self.orders = OrdersPage(self.driver)
@@ -188,6 +186,34 @@ class TestOrdersPage(BaseTest):
         self.driver.switch_to.window(self.driver.window_handles[0])
         # Turn off toggle Public Selection page
         self.orders.verify_toggle_status()
+
+    def test_verify_all_elements_at_pending_approval_tab(self):
+        """
+        This test case verify Pending Approval TAB:
+         - each elements visible, clickable at Pending Approval TAB.
+        """
+        self.orders = OrdersPage(self.driver)
+
+        # Click at first order to open it
+        self.orders.click(self.orders.FIRST_ROW)
+        self.orders.wait_till_loader_disappear()
+
+        if self.orders.is_clickable(self.orders.PENDING_APPROVAL_TAB):
+            # Switch to Pending Approval TAB
+            self.orders.click(self.orders.PENDING_APPROVAL_TAB)
+            self.orders.wait_till_loader_disappear()
+        else:
+            sys.exit('FAILED! Verify Pending Approval TAB')
+
+
+        assert self.orders.is_visible(self.orders.PENDING_APPROVAL_TABLE)
+        assert self.orders.is_visible(self.orders.PENDING_APPROVAL_APPROVE_BUTTON)
+        assert self.orders.is_visible(self.orders.PENDING_APPROVAL_DELETE_BUTTON)
+
+        # Click Select ALL checkbox to verify APPROVE, DELETE buttons are clickable
+        self.driver.find_element_by_xpath(self.orders.PENDING_APPROVAL_SELECT_ALL_CHECK_BOX).click()
+        assert self.orders.is_clickable(self.orders.PENDING_APPROVAL_APPROVE_BUTTON)
+        assert self.orders.is_clickable(self.orders.PENDING_APPROVAL_DELETE_BUTTON)
 
 
 

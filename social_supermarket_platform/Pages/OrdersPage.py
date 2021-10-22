@@ -50,11 +50,11 @@ class OrdersPage(BasePage):
     ALL_RECIPIENTS_TABLE = '//div[@class="ResponseList__Container-dhrcr0-0 gtArHw ag-theme-alpine"]'
 
     # Pending Approval TAB
-    PENDING_APPROVAL_TAB = '//div[@class="Tabs__Button-kudd6e-3 ebKLBX"]'
+    PENDING_APPROVAL_TAB = '//div[@class="Tabs__Buttons-kudd6e-2 kmUmxb OrderPage__StyledTabs-c0eyda-4 bBsZbd"]//div[@class="Tabs__Button-kudd6e-3 kmcEXW"][3]'
     PENDING_APPROVAL_APPROVE_BUTTON = '//button[text()="Approve"]'
     PENDING_APPROVAL_DELETE_BUTTON = '//button[text()="Delete"]'
     PENDING_APPROVAL_TABLE = '//div[@class="ResponseList__Container-dhrcr0-0 gtArHw ag-theme-alpine"]'
-    PENDING_APPROVAL_SELECT_ALL_CHECK_BOX = '//div[@role="columnheader"]//input[@class="ag-input-field-input ag-checkbox-input"][0]'
+    PENDING_APPROVAL_SELECT_ALL_CHECK_BOX = '//input[@class="ag-input-field-input ag-checkbox-input"]'
     PENDING_APPROVAL_FIRST_CHECK_BOX_FROM_THE_LIST = '//div[@class="ag-center-cols-container"]//div[@role="row"]//input'
 
     # Publick Link separate page elements
