@@ -91,9 +91,43 @@ class TestOrdersPage(BaseTest):
         assert self.orders.is_visible(self.orders.PRODUCTS_TAB_UPDATE_BUTTON)
         assert self.orders.is_visible(self.orders.PRODUCTS_TAB_UPDATE_BUTTON)
 
+    def test_verify_all_elements_at_orders_page_approves_tab(self):
+        """
+        This test case verify Invite TAB:
+         - each elements visible, clickable at Orders page Products TAB.
+         - verify each tab elements is visible, clickable
+        """
+        self.orders = OrdersPage(self.driver)
 
+        # Click at first order to open it
+        self.orders.click(self.orders.FIRST_ROW)
+        self.orders.wait_till_loader_disappear()
 
+        # Click INVITE button to open modal
+        self.orders.click(self.orders.INVITE_BUTTON)
+        self.orders.wait_till_loader_disappear()
 
+        # input some valid email
+        self.orders.send_keys(self.orders.INVITE_MODAL_EMAILS_INPUT, 'test@mail.com')
+
+        # click NEXT button
+        self.orders.click(self.orders.INVITE_MODAL_NEXT_BUTTON)
+
+        assert self.orders.is_visible(self.orders.SENDER_NAME_FIELD)
+        assert self.orders.is_visible(self.orders.SENDER_NAME_FIELD)
+        assert self.orders.is_visible(self.orders.EMAIL_GIFT_MESSAGE)
+        assert self.orders.is_clickable(self.orders.EMAIL_GIFT_MESSAGE)
+        assert self.orders.is_visible(self.orders.BACK_BUTTON)
+        assert self.orders.is_clickable(self.orders.INVITE_VIA_EMAIL_TITLE)
+        assert self.orders.is_visible(self.orders.INVITE_VIA_EMAIL_TITLE)
+
+        # Click INVITE button to finish order
+        self.orders.click(self.orders.INVITE_MODAL_NEXT_BUTTON)
+        self.orders.wait_till_loader_disappear()
+
+        assert self.orders.is_visible(self.orders.ALL_RECIPIENTS_TAB)
+        assert self.orders.is_clickable(self.orders.ALL_RECIPIENTS_TAB)
+        assert self.orders.is_visible(self.orders.ALL_RECIPIENTS_TABLE)
 
 
 

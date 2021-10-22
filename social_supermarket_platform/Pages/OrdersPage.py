@@ -39,6 +39,17 @@ class OrdersPage(BasePage):
     PRODUCTS_TAB = '//div[@class="Tabs__Container-kudd6e-0 eINFpX"]//div[text()="Products"]'
     PRODUCTS_TAB_UPDATE_BUTTON = '//button[@class="PrimaryButton__Button-sc-1aj0s98-1 bPcAIM OrderItems__StyledButton-knh4f6-1 dQpQyg"]'
 
+    # Ivvite view Email second tab
+    SENDER_NAME_FIELD = '//input[@id="senderName"]'
+    EMAIL_GIFT_MESSAGE = '//textarea[@id="emailGiftMessage"]'
+    BACK_BUTTON = '//button[text()="Back"]'
+    INVITE_VIEA_EMAIL_INVITE_BUTTON = '//button[text()="INVITE"]'
+
+    # All Recipients TAB
+    ALL_RECIPIENTS_TAB = '//div[@class="Tabs__Button-kudd6e-3 ebKLBX"]'
+    ALL_RECIPIENTS_TABLE = '//div[@class="ResponseList__Container-dhrcr0-0 gtArHw ag-theme-alpine"]'
+
+
     def __init__(self, driver):
         super().__init__(driver)
         self.driver.get(TestData.BASE_URL)
