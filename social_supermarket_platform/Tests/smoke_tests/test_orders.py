@@ -200,13 +200,15 @@ class TestOrdersPage(BaseTest):
         self.orders.wait_till_loader_disappear()
 
         try:
-            self.orders.is_clickable(self.orders.PENDING_APPROVAL_TAB)
+            self.orders.is_clickable(self.orders.PENDING_APPROVAL_TAB, timeout=2)
             # Switch to Pending Approval TAB
             self.orders.click(self.orders.PENDING_APPROVAL_TAB)
             self.orders.wait_till_loader_disappear()
         except:
             TimeoutException
 
+            # Turn off toggle before test execution
+            self.orders.verify_toggle_status()
             # add Pending Approval tab
             # Turn ON toggle click Public link
             self.orders.click(self.orders.PUBLIC_SELECTION_PAGE_TOGGLE_TURN_ON)
