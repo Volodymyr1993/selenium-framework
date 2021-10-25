@@ -6,7 +6,7 @@ class TestHelp(BaseTest):
     def test_verify_all_elements_on_the_help_page(self):
         """
         This test case verify:
-         - each elements visible, clickable /login page.
+         - each elements visible, clickable at the Help page.
                 """
         self.helpPage = HelpPage(self.driver)
 

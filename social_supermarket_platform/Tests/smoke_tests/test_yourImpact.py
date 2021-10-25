@@ -6,7 +6,7 @@ class TestYourImpact(BaseTest):
     def test_verify_all_elements_on_the_page(self):
         """
         This test case verify:
-         - each elements visible, clickable /login page.
+         - each elements visible, clickable at the /dashboard page.
                 """
         self.yourImpact = YourImpact(self.driver)
 

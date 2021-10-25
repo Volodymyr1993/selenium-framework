@@ -6,7 +6,7 @@ class TestFavorites(BaseTest):
         """
         This test case verify:
          - each elements visible, clickable at Favorites page.
-         - each element im product modal is visible, clickable
+         - each element in product modal is visible, clickable
         """
         self.favorites = FavouritesPage(self.driver)
 

@@ -5,7 +5,7 @@ class TestSendAgift(BaseTest):
     def test_verify_all_elements_at_send_a_gift_page(self):
         """
         This test case verify:
-         - each elements visible, clicable at Send a Gift page.
+         - each elements visible, clickable at the Send a Gift page.
          - each element im product modal is visible, clickable
         """
         self.send_a_gift = SendAgift(self.driver)

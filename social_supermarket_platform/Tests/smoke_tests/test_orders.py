@@ -7,8 +7,7 @@ class TestOrdersPage(BaseTest):
     def test_verify_all_elements_at_orders_page_invite_tab(self):
         """
         This test case verify Invite TAB:
-         - each elements visible, clickable at Orders page Invite TAB.
-         - verify each tab elements is visible, clickable
+         - each elements visible, clickable at the Orders page --> Invite TAB.
         """
         self.orders = OrdersPage(self.driver)
 
@@ -78,7 +77,7 @@ class TestOrdersPage(BaseTest):
     def test_verify_all_elements_at_orders_page_products_tab(self):
         """
         This test case verify Invite TAB:
-         - each elements visible, clickable at Orders page Products TAB.
+         - each elements visible, clickable at the Orders page --> Products TAB.
         """
         self.orders = OrdersPage(self.driver)
 
@@ -97,7 +96,7 @@ class TestOrdersPage(BaseTest):
     def test_verify_all_elements_at_all_recipients_tab(self):
         """
         This test case verify All Recipients TAB:
-         - each elements visible, clickable at All Recipients TAB.
+         - each elements visible, clickable at the Orders Page --> All Recipients TAB.
         """
         self.orders = OrdersPage(self.driver)
 
@@ -133,7 +132,7 @@ class TestOrdersPage(BaseTest):
 
     def test_verify_all_elements_at_public_selection_page(self):
         """
-         - each elements visible, clickable at Public Selection Page.
+         - each elements visible, clickable at the Orders --> Public Selection Page.
         """
         self.orders = OrdersPage(self.driver)
 
@@ -191,7 +190,7 @@ class TestOrdersPage(BaseTest):
     def test_verify_all_elements_at_pending_approval_tab(self):
         """
         This test case verify Pending Approval TAB:
-         - each elements visible, clickable at Pending Approval TAB.
+         - each elements visible, clickable at the Orders Page --> Pending Approval TAB.
         """
         self.orders = OrdersPage(self.driver)
 

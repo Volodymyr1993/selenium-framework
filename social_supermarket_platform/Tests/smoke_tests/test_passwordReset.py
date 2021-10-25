@@ -5,7 +5,7 @@ class TestPasswordReset(BaseTest):
     def test_verify_all_elements_on_the_register_page(self):
         """
         This test case verify:
-         - each elements visible, clickable /passwordReset page.
+         - each elements visible, clickable at the /passwordReset page.
         """
         self.passwordReset = PasswordResetPage(self.driver)
 

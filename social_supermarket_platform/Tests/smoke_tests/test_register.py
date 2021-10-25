@@ -5,7 +5,7 @@ class TestRegisterPage(BaseTest):
     def test_verify_all_elements_on_the_register_page(self):
         """
         This test case verify:
-         - each elements visible, clickable /register page.
+         - each elements visible, clickable at the /register page.
         """
         self.registerPage = RegisterPage(self.driver)
 
