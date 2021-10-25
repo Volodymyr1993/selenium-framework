@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 from Config.config import TestData
 from Pages.BasePage import BasePage
+from selenium.common.exceptions import TimeoutException
 
 class OrdersPage(BasePage):
     """ locators - """
@@ -50,7 +51,7 @@ class OrdersPage(BasePage):
     ALL_RECIPIENTS_TABLE = '//div[@class="ResponseList__Container-dhrcr0-0 gtArHw ag-theme-alpine"]'
 
     # Pending Approval TAB
-    PENDING_APPROVAL_TAB = '//div[@class="Tabs__Buttons-kudd6e-2 kmUmxb OrderPage__StyledTabs-c0eyda-4 bBsZbd"]//div[@class="Tabs__Button-kudd6e-3 kmcEXW"][3]'
+    PENDING_APPROVAL_TAB = '//*[contains(text(), "Pending Approval")]'
     PENDING_APPROVAL_APPROVE_BUTTON = '//button[text()="Approve"]'
     PENDING_APPROVAL_DELETE_BUTTON = '//button[text()="Delete"]'
     PENDING_APPROVAL_TABLE = '//div[@class="ResponseList__Container-dhrcr0-0 gtArHw ag-theme-alpine"]'
@@ -88,9 +89,12 @@ class OrdersPage(BasePage):
         If toggle is turned off - pass
         :return:
         """
-        if self.is_visible(self.PUBLIC_SELECTION_PAGE_TOGGLE_TURN_OFF):
-            self.click(self.PUBLIC_SELECTION_PAGE_TOGGLE_TURN_OFF)
-        elif self.is_visible(self.PUBLIC_SELECTION_PAGE_TOGGLE_TURN_ON):
-            pass
+        try:
+            self.click(self.PUBLIC_SELECTION_PAGE_TOGGLE_TURN_OFF, timeout=1)
+        except TimeoutException:
+            print('Verify toggle works')
+
+
+
 
 

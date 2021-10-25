@@ -1,6 +1,7 @@
 import sys
 from Tests.base import BaseTest
 from Pages.OrdersPage import OrdersPage
+from selenium.common.exceptions import TimeoutException
 
 class TestOrdersPage(BaseTest):
     def test_verify_all_elements_at_orders_page_invite_tab(self):
@@ -198,13 +199,47 @@ class TestOrdersPage(BaseTest):
         self.orders.click(self.orders.FIRST_ROW)
         self.orders.wait_till_loader_disappear()
 
-        if self.orders.is_clickable(self.orders.PENDING_APPROVAL_TAB):
+        try:
+            self.orders.is_clickable(self.orders.PENDING_APPROVAL_TAB)
             # Switch to Pending Approval TAB
             self.orders.click(self.orders.PENDING_APPROVAL_TAB)
             self.orders.wait_till_loader_disappear()
-        else:
-            sys.exit('FAILED! Verify Pending Approval TAB')
+        except:
+            TimeoutException
 
+            # add Pending Approval tab
+            # Turn ON toggle click Public link
+            self.orders.click(self.orders.PUBLIC_SELECTION_PAGE_TOGGLE_TURN_ON)
+            self.orders.wait_till_loader_disappear()
+            self.orders.click(self.orders.PUBLIC_LINK)
+            self.orders.wait_till_loader_disappear()
+
+            # Switch to Public Link tab
+            self.driver.switch_to.window(self.driver.window_handles[1])
+            self.orders.wait_till_loader_disappear()
+
+            # Input all required fields with valid data
+            self.orders.send_keys(self.orders.PUBLIC_LINK_PHONE_NUMBER_FIELD, '1234567890')
+            self.orders.send_keys(self.orders.PUBLIC_LINK_EMAIL_FIELD, 'test@mail.com')
+            self.orders.send_keys(self.orders.PUBLIC_LINK_FIRST_NAME_FIELD, '123456789')
+            self.orders.send_keys(self.orders.PUBLIC_LINK_LAST_NAME_FIELD, '123456789')
+            self.orders.send_keys(self.orders.PUBLIC_LINK_POSTCODE_FIELD, '123456789')
+            self.orders.send_keys(self.orders.PUBLIC_LINK_ADDRESS1_FIELD, '123456789')
+            self.orders.send_keys(self.orders.PUBLIC_LINK_CITY_FIELD, '123456789')
+            self.orders.click(self.orders.PUBLIC_LINK_SUBMIT_BUTTON)
+            self.orders.wait_till_loader_disappear()
+
+            # Switch to Public Link tab
+            self.driver.switch_to.window(self.driver.window_handles[0])
+            self.orders.wait_till_loader_disappear()
+
+        # Click REFRESH BUTTON
+        self.orders.click(self.orders.REFRESH_BUTTON)
+        self.orders.wait_till_loader_disappear()
+
+        # Switch to Pending Approval TAB
+        self.orders.click(self.orders.PENDING_APPROVAL_TAB)
+        self.orders.wait_till_loader_disappear()
 
         assert self.orders.is_visible(self.orders.PENDING_APPROVAL_TABLE)
         assert self.orders.is_visible(self.orders.PENDING_APPROVAL_APPROVE_BUTTON)
