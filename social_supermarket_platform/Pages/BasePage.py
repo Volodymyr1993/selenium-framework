@@ -79,4 +79,4 @@ class BasePage:
     # Log out from app
     def do_log_out(self):
         self.click(self.LOG_OUT_ICON)
-        self.click(self.LOGIN_BUTTON)
+        self.click(self.LOG_OUT_BUTTON)
