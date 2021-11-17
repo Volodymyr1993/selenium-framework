@@ -14,8 +14,8 @@ class LoginPage(BasePage):
     COOKIE_BANNER = '//div[@role="banner"]'
     COOKIE_BANNER_ACCEPT = '//div[@role="banner"]//a[@id="hs-eu-confirmation-button"]'
     COOKIE_BANNER_DECLINE = '//div[@role="banner"]//a[@id="hs-eu-decline-button"]'
-    LOG_OUT_ICON = '//div[@class="ProfileMenu__Container-sc-1pvu93g-0 eLDzJI"]'
-    LOG_OUT_BUTTON = '//button[@class="LinkButton-sc-1w7z7c2-0 bUuaxz"]'
+    LOG_OUT_ICON = '//div[contains(@class, "ProfileMenu__Container-sc")]'
+    LOG_OUT_BUTTON = '//button[contains(@class, "LinkButton-sc")]'
 
     ''' Constructor of the page class '''
     def __init__(self, driver):

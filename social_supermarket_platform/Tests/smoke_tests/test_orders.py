@@ -30,8 +30,8 @@ class TestOrdersPage(BaseTest):
         assert self.orders.is_clickable(self.orders.INVITE_TAB)
         assert self.orders.is_visible(self.orders.PRODUCTS_TAB)
         assert self.orders.is_clickable(self.orders.PRODUCTS_TAB)
-        assert self.orders.is_visible(self.orders.PUBLIC_SELECTION_PAGE_TOGGLE_TURN_ON)
-        assert self.orders.is_clickable(self.orders.PUBLIC_SELECTION_PAGE_TOGGLE_TURN_ON)
+        assert self.orders.is_visible(self.orders.PUBLIC_SELECTION_PAGE_TOGGLE)
+        assert self.orders.is_clickable(self.orders.PUBLIC_SELECTION_PAGE_TOGGLE)
         assert self.orders.is_visible(self.orders.INVITE_BUTTON)
         assert self.orders.is_clickable(self.orders.INVITE_BUTTON)
         assert self.orders.is_visible(self.orders.EDIT_BUTTON)
@@ -59,7 +59,7 @@ class TestOrdersPage(BaseTest):
         assert self.orders.is_clickable(self.orders.CANSEL_BUTTON)
 
         # Turn ON toggle to verify public link is visible
-        self.orders.click(self.orders.PUBLIC_SELECTION_PAGE_TOGGLE_TURN_ON)
+        self.orders.click(self.orders.PUBLIC_SELECTION_PAGE_TOGGLE)
         self.orders.wait_till_loader_disappear()
         assert self.orders.is_clickable(self.orders.PUBLIC_LINK)
         assert self.orders.is_visible(self.orders.PUBLIC_LINK)
@@ -71,7 +71,7 @@ class TestOrdersPage(BaseTest):
         assert self.orders.is_visible(self.orders.PUBLIC_CANCEL_BUTTON)
         assert self.orders.is_clickable(self.orders.PUBLIC_CANCEL_BUTTON)
         # turn off the toggle
-        self.orders.click(self.orders.PUBLIC_SELECTION_PAGE_TOGGLE_TURN_OFF)
+        self.orders.click(self.orders.PUBLIC_SELECTION_PAGE_TOGGLE)
         self.orders.wait_till_loader_disappear()
 
     def test_verify_all_elements_at_orders_page_products_tab(self):
@@ -144,7 +144,7 @@ class TestOrdersPage(BaseTest):
         self.orders.verify_toggle_status()
 
         # Turn ON toggle click Public link
-        self.orders.click(self.orders.PUBLIC_SELECTION_PAGE_TOGGLE_TURN_ON)
+        self.orders.click(self.orders.PUBLIC_SELECTION_PAGE_TOGGLE)
         self.orders.wait_till_loader_disappear()
         self.orders.click(self.orders.PUBLIC_LINK)
         self.orders.wait_till_loader_disappear()
@@ -210,7 +210,7 @@ class TestOrdersPage(BaseTest):
             self.orders.verify_toggle_status()
             # add Pending Approval tab
             # Turn ON toggle click Public link
-            self.orders.click(self.orders.PUBLIC_SELECTION_PAGE_TOGGLE_TURN_ON)
+            self.orders.click(self.orders.PUBLIC_SELECTION_PAGE_TOGGLE)
             self.orders.wait_till_loader_disappear()
             self.orders.click(self.orders.PUBLIC_LINK)
             self.orders.wait_till_loader_disappear()

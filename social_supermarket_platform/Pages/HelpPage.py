@@ -4,7 +4,7 @@ from Pages.BasePage import BasePage
 class HelpPage(BasePage):
     """ locators - """
     HELP_PAGE = '//a[@href="/guide"]'
-    GUIDE_PAGE_HEADING = '//h1[@class="GuidePage__Heading-sc-1e0t75o-2 jNqtAi"]'
+    GUIDE_PAGE_HEADING = '//h1[text()="What is This?"]'
     HOW_TO_SEND_A_GIFT = '//h1[text()="How to Send a Gift"]'
     FREQUENTLY_ASKED_QUESTIONS = '//h1[text()="Frequently Asked Questions"]'
     GET_IN_TOUCH = '//h1[text()="Get In Touch"]'

@@ -9,7 +9,7 @@ class RegisterPage(BasePage):
     EMAIL_FIELD = '//input[@id="email"]'
     COMPANY_FIELD = '//input[@id="company"]'
     PASSWORD_FIELD = '//input[@id="password"]'
-    REGISTER_BUTTON = '//button[@class="PrimaryButton__Button-sc-1aj0s98-1 bPcAIM"]'
+    REGISTER_BUTTON = '//button[contains(@class, "PrimaryButton__Button-sc-")]'
     GO_BACK_BUTTON = '//a[text()="Go Back"]'
     REGISTER_TITLE = '//h1'
     COOKIE_BANNER = '//div[@role="banner"]'

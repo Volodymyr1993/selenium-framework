@@ -9,10 +9,10 @@ class BasePage:
     EMAIL_FIELD =  '//input[@id="email"]'
     PASSWORD_FIELD = '//input[@id="password"]'
     LOGIN_BUTTON = '//button[text()="Log In"]'
-    LOG_OUT_ICON = '//div[@class="ProfileMenu__Container-sc-1pvu93g-0 eLDzJI"]'
-    LOG_OUT_BUTTON = '//button[@class="LinkButton-sc-1w7z7c2-0 bUuaxz"]'
+    LOG_OUT_ICON = '//div[contains(@class, "ProfileMenu__Container-sc")]'
+    LOG_OUT_BUTTON = '//button[contains(@class, "LinkButton-sc")]'
     COOKIE_BANNER_DECLINE = '//div[@role="banner"]//a[@id="hs-eu-decline-button"]'
-    LOADER = '//div[@class="Spinner__Overlay-sc-1kxy40r-0 iHwQqi"]'
+    LOADER = '//div[contains(@class, "Spinner__Overlay-sc-")]'
 
 
     def __init__(self, driver, xpath=None, timeout=10):

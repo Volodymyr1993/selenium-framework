@@ -4,7 +4,7 @@ from Pages.BasePage import BasePage
 class YourImpact(BasePage):
     """ locators - """
     YOUR_IMPACT_PAGE = '//a[@href="/dashboard"]'
-    PAGE_TITLE = '//div[@class="Placeholder__Container-sc-1am38zg-0 koVThv"]'
+    PAGE_TITLE = '//div[contains(@class, "Placeholder__Container-sc-")]'
 
     ''' Constructor of the page class '''
 

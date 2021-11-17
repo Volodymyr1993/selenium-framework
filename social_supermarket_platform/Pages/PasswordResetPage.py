@@ -5,7 +5,7 @@ from Pages.BasePage import BasePage
 class PasswordResetPage(BasePage):
     """ locators - """
     EMAIL_FIELD = '//input[@id="email"]'
-    RESET_PASSWORD_BUTTON = '//button[@class="PrimaryButton__Button-sc-1aj0s98-1 bPcAIM"]'
+    RESET_PASSWORD_BUTTON = '//button[contains(@class, "PrimaryButton__Button-sc-")]'
     GO_BACK_BUTTON = '//a[text()="Go Back"]'
     RESET_PASSWORD_TITLE = '//h1'
     COOKIE_BANNER = '//div[@role="banner"]'

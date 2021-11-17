@@ -5,13 +5,13 @@ from Pages.BasePage import BasePage
 class FavouritesPage(BasePage):
     """ locators - """
     FAVORITES_PAGE = '//a[@href="/favorites"]'
-    PRODUCT_LIST = '//div[@class="ProductList__Container-jbi448-0 iewNfG"]'
-    SEARCH_ICON = '//div[@class="FavoritesPage__Container-sc-1tq5yuv-0 cjtyME"]//i[@class="search icon"][1]'
-    FAVORITE_ICON = '//div[@class="FavoritesPage__Container-sc-1tq5yuv-0 cjtyME"]//i[@class="favorite icon"][1]'
-    MODAL_CLOSE_BUTTON = '//div[@class="Modal__Close-sc-10kpwz6-4 brEnYU"]'
-    MODAL_TITLE = '//h1[@class="ProductModal__Title-sc-18obu0p-4 jMAsjx"]'
-    MODAL_DETAILS_BUTTON = '//button[@class="PlainButton-hzadhp-0 AccordionHeader__HeaderButton-sc-33meak-1 boLGoi cOIUGB"]//span[text()="Details"]'
-    MODAL_ABOUT_BUTTON = '//button[@class="PlainButton-hzadhp-0 AccordionHeader__HeaderButton-sc-33meak-1 boLGoi cOIUGB"]//span[text()="About "]'
+    PRODUCT_LIST = '//div[contains(@class, "ProductList__Container")]'
+    SEARCH_ICON = '//div[contains(@class, "FavoritesPage__Container-sc")]//i[@class="search icon"][1]'
+    FAVORITE_ICON = '//div[contains(@class, "FavoritesPage__Container-sc-")]//i[@class="favorite icon"][1]'
+    MODAL_CLOSE_BUTTON = '//div[contains(@class, "Modal__Close-sc-")]'
+    MODAL_TITLE = '//h1[contains(@class, "ProductModal__Title-sc-")]'
+    MODAL_DETAILS_BUTTON = '//button[contains(@class, "PlainButton")]//span[text()="Details"]'
+    MODAL_ABOUT_BUTTON = '//button[contains(@class, "PlainButton")]//span[text()="About "]'
 
 
     def __init__(self, driver):

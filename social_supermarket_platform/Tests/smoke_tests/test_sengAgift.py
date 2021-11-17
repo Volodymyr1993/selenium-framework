@@ -1,5 +1,6 @@
 from Tests.base import BaseTest
 from Pages.SendAgiftPage import SendAgift
+from selenium.common.exceptions import TimeoutException
 
 class TestSendAgift(BaseTest):
     def test_verify_all_elements_at_send_a_gift_page(self):
@@ -45,8 +46,13 @@ class TestSendAgift(BaseTest):
         self.send_a_gift.click(self.send_a_gift.SEARCH_ICON)
 
         assert self.send_a_gift.is_visible(self.send_a_gift.MODAL_TITLE)
-        assert self.send_a_gift.is_visible(self.send_a_gift.MODAL_DROP_DOWN)
-        assert self.send_a_gift.is_clickable(self.send_a_gift.MODAL_DROP_DOWN)
+        try:
+            assert self.send_a_gift.is_visible(self.send_a_gift.MODAL_DROP_DOWN, timeout=1)
+            assert self.send_a_gift.is_clickable(self.send_a_gift.MODAL_DROP_DOWN, timeout=1)
+        except TimeoutException:
+            assert self.send_a_gift.is_visible(self.send_a_gift.MODAL_WITH_ONE_DROP_DOWN)
+            assert self.send_a_gift.is_clickable(self.send_a_gift.MODAL_WITH_ONE_DROP_DOWN)
+
         assert self.send_a_gift.is_clickable(self.send_a_gift.MODAL_CLOSE_BUTTON)
         assert self.send_a_gift.is_visible(self.send_a_gift.MODAL_CLOSE_BUTTON)
         assert self.send_a_gift.is_visible(self.send_a_gift.MODAL_DETAILS_BUTTON)
@@ -65,7 +71,10 @@ class TestSendAgift(BaseTest):
         self.send_a_gift = SendAgift(self.driver)
         # Go to list of added products
         self.send_a_gift.click(self.send_a_gift.SEARCH_ICON)
-        self.send_a_gift.click(self.send_a_gift.MODAL_DROP_DOWN)
+        try:
+            self.send_a_gift.click(self.send_a_gift.MODAL_DROP_DOWN, timeout=1)
+        except TimeoutException:
+            self.send_a_gift.click(self.send_a_gift.MODAL_WITH_ONE_DROP_DOWN)
         self.send_a_gift.click(self.send_a_gift.MODAL_CHOOSE_FIRST_OPTION_FROM_THE_DROP_DOWN)
         self.send_a_gift.click(self.send_a_gift.MODAL_CHOOSE_TYPE_BUTTON)
         self.send_a_gift.click(self.send_a_gift.NEXT_BUTTON)

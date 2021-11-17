@@ -2,43 +2,44 @@ from selenium.webdriver.common.by import By
 from Config.config import TestData
 from Pages.BasePage import BasePage
 from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.support.color import Color
 
 class OrdersPage(BasePage):
     """ locators - """
     ORDERS_PAGE = '//a[@href="/orders"]'
-    ORDERS_CONTAINER = '//div[@class="OrdersPage__Container-sc-7h779g-0 bJlzXY"]'
-    BACK_TO_ORDERS_BUTTON = '//button[@class="LinkButton-sc-1w7z7c2-0 OrderPage__StyledLinkButton-c0eyda-7 bUuaxz ciTiDY"]'
+    ORDERS_CONTAINER = '//div[contains(@class, "OrdersPage__Container-sc")]'
+    BACK_TO_ORDERS_BUTTON = '//button[contains(@class, "LinkButton-sc-1w7z7c2-0 fDqHbc")]'
     ORDERS_TITLE = '//h1'
     FIRST_ROW = '//div[@class="ag-center-cols-container"]//div[@row-id="0"]'
-    EDIT_TITLE_BUTTON = '//h1//button[@class="LinkButton-sc-1w7z7c2-0 OrderPage__EditLink-c0eyda-3 bUuaxz keyDUd"]'
-    REFRESH_BUTTON = '//button[@class="PrimaryButton__Button-sc-1aj0s98-1 bPcAIM OrderPage__StyledButton-c0eyda-11 jkXxpL"]'
-    INVITE_TAB = '//div[@class="Tabs__Container-kudd6e-0 eINFpX"]//div[text()="Invite"]'
-    PUBLIC_SELECTION_PAGE_TOGGLE_TURN_ON = '//div[@class="Toggle__Circle-h1a751-1 cvPdHh"]'
-    PUBLIC_SELECTION_PAGE_TOGGLE_TURN_OFF = '//div[@class="Toggle__Circle-h1a751-1 NhBDC"]'
+    EDIT_TITLE_BUTTON = '//h1//button[contains(@class, "LinkButton-sc-1w7z7c2-0 OrderPage__EditLink-")]'
+    REFRESH_BUTTON = '//button[contains(text(), "Refresh")]'
+    INVITE_TAB = '//div[contains(@class, "Tabs__Container")]//div[text()="Invite"]'
+    PUBLIC_SELECTION_PAGE_TOGGLE = '//div[contains(@class, "Toggle__Container-sc")]'
+    # PUBLIC_SELECTION_PAGE_TOGGLE_TURN_OFF = '//div[contains(@class, "Toggle__Circle-h1a751-1")]'
     INVITE_BUTTON = '//button[text()="Invite"]'
-    EDIT_BUTTON = '//div[@class="GiftNoteConfig__Container-kr6bw6-0 kIlZrQ"]//button[text()="Edit"]'
-    SAVE_BUTTON = '//div[@class="GiftNoteConfig__Container-kr6bw6-0 kIlZrQ"]//button[text()="Save"]'
-    CANSEL_BUTTON = '//div[@class="GiftNoteConfig__Container-kr6bw6-0 kIlZrQ"]//button[text()="Cancel"]'
-    GIFT_NOTE_TEXTAREA = '//textarea[@class="GiftNoteConfig__Textarea-kr6bw6-6 kaNWjr"]'
+    EDIT_BUTTON = '//div[contains(@class, "GiftNoteConfig__Container")]//button[text()="Edit"]'
+    SAVE_BUTTON = '//div[contains(@class, "GiftNoteConfig__Container")]//button[text()="Save"]'
+    CANSEL_BUTTON = '//div[contains(@class, "GiftNoteConfig__Container")]//button[text()="Cancel"]'
+    GIFT_NOTE_TEXTAREA = '//textarea[contains(@class, "GiftNoteConfig__Textarea")]'
 
     # Public Selection Page section
-    PUBLIC_LINK = '//div[@class="ShareableSelectionPageConfig__Url-dp8gek-4 JDsqx"]//a'
-    PUBLIC_EDIT_BUTTON = '//button[@class="PrimaryButton__Button-sc-1aj0s98-1 bPcAIM ShareableSelectionPageConfig__StyledPrimaryButton-dp8gek-10 kYGMvC"]'
-    PUBLIC_SAVE_BUTTON = '//form[@class="ShareableSelectionPageConfig__DescriptionForm-dp8gek-8 Jjjhe"]//button[text()="Save"]'
-    PUBLIC_CANCEL_BUTTON = '//form[@class="ShareableSelectionPageConfig__DescriptionForm-dp8gek-8 Jjjhe"]//button[text()="Cancel"]'
-    PUBLIC_TEXTAREA_BUTTON = '//form[@class="ShareableSelectionPageConfig__DescriptionForm-dp8gek-8 Jjjhe"]//textarea'
+    PUBLIC_LINK = '//div[contains(@class, "ShareableSelectionPageConfig__Url")]//a'
+    PUBLIC_EDIT_BUTTON = '//button[contains(@class, "PrimaryButton__Button-sc-1aj0s98-1 fEIcqn ShareableSelectionPage")]'
+    PUBLIC_SAVE_BUTTON = '//form[contains(@class, "ShareableSelectionPageConfig__DescriptionForm-")]//button[text()="Cancel"]'
+    PUBLIC_CANCEL_BUTTON = '//form[contains(@class, "ShareableSelectionPageConfig__DescriptionForm-")]//button[text()="Cancel"]'
+    PUBLIC_TEXTAREA_BUTTON = '//form[contains(@class, "ShareableSelectionPageConfig__DescriptionForm-")]//textarea'
 
     # Invite via Email modal
-    INVITE_MODAL = '//div[@class="Modal__Content-sc-10kpwz6-1 gOFxnS"]'
-    INVITE_VIA_EMAIL_TITLE = '//div[@class="Modal__Content-sc-10kpwz6-1 gOFxnS"]//h1'
-    INVITE_MODAL_CLOSE_BUTTON = '//div[@class="Modal__Content-sc-10kpwz6-1 gOFxnS"]//div[@class="Modal__Close-sc-10kpwz6-4 brEnYU"]'
-    INVITE_MODAL_EMAILS_INPUT = '//div[@class="Modal__Content-sc-10kpwz6-1 gOFxnS"]//textarea[@class="InviteByEmailModal__Textarea-dnhv5e-4 FLAlr"]'
-    INVITE_MODAL_NEXT_BUTTON = '//div[@class="Modal__Content-sc-10kpwz6-1 gOFxnS"]//button[@class="PrimaryButton__Button-sc-1aj0s98-1 bPcAIM InviteByEmailModal__StyledButton-dnhv5e-8 khOlvR"]'
+    INVITE_MODAL = '//div[contains(@class, "Modal__Content-sc")]'
+    INVITE_VIA_EMAIL_TITLE = '//div[contains(@class, "Modal__Content-sc")]//h1'
+    INVITE_MODAL_CLOSE_BUTTON = '//div[contains(@class, "Modal__Content-sc-10kpwz6-1")]//div[contains(@class, "Modal__Close-sc-")]'
+    INVITE_MODAL_EMAILS_INPUT = '//div[contains(@class, "Modal__Content-sc-10kpwz6-1")]//textarea[contains(@class, "InviteByEmailModal__Textarea")]'
+    INVITE_MODAL_NEXT_BUTTON = '//div[contains(@class, "Modal__Content-sc-10kpwz6-1")]//button[contains(@class, "PrimaryButton__Button-sc")]'
 
     # Products tab
-    PRODUCTS_TAB_PRODUCTS_CONTAINER = '//div[@class="OrderItems__Container-knh4f6-0 hUfEtj"]'
-    PRODUCTS_TAB = '//div[@class="Tabs__Container-kudd6e-0 eINFpX"]//div[text()="Products"]'
-    PRODUCTS_TAB_UPDATE_BUTTON = '//button[@class="PrimaryButton__Button-sc-1aj0s98-1 bPcAIM OrderItems__StyledButton-knh4f6-1 dQpQyg"]'
+    PRODUCTS_TAB_PRODUCTS_CONTAINER = '//div[contains(@class, "OrderItems__Container-")]'
+    PRODUCTS_TAB = '//div[contains(@class, "Tabs__Container")]//div[text()="Products"]'
+    PRODUCTS_TAB_UPDATE_BUTTON = '//button[contains(@class, "PrimaryButton__Button-sc-1aj0s98-1 fEIcqn OrderItems__StyledButton-sc")]'
 
     # Ivvite view Email second tab
     SENDER_NAME_FIELD = '//input[@id="senderName"]'
@@ -47,14 +48,14 @@ class OrdersPage(BasePage):
     INVITE_VIEA_EMAIL_INVITE_BUTTON = '//button[text()="INVITE"]'
 
     # All Recipients TAB
-    ALL_RECIPIENTS_TAB = '//div[@class="Tabs__Button-kudd6e-3 ebKLBX"]'
-    ALL_RECIPIENTS_TABLE = '//div[@class="ResponseList__Container-dhrcr0-0 gtArHw ag-theme-alpine"]'
+    ALL_RECIPIENTS_TAB = '//div[contains(@class, "Tabs__Container")]//div[contains(text(), "All Recipients")]'
+    ALL_RECIPIENTS_TABLE = '//div[contains(@class, "ResponseList__Container-sc")]'
 
     # Pending Approval TAB
     PENDING_APPROVAL_TAB = '//*[contains(text(), "Pending Approval")]'
     PENDING_APPROVAL_APPROVE_BUTTON = '//button[text()="Approve"]'
     PENDING_APPROVAL_DELETE_BUTTON = '//button[text()="Delete"]'
-    PENDING_APPROVAL_TABLE = '//div[@class="ResponseList__Container-dhrcr0-0 gtArHw ag-theme-alpine"]'
+    PENDING_APPROVAL_TABLE = '//div[contains(@class, "Tabs__Container")]//div[contains(text(), "Pending Approval")]'
     PENDING_APPROVAL_SELECT_ALL_CHECK_BOX = '//input[@class="ag-input-field-input ag-checkbox-input"]'
     PENDING_APPROVAL_FIRST_CHECK_BOX_FROM_THE_LIST = '//div[@class="ag-center-cols-container"]//div[@role="row"]//input'
 
@@ -89,12 +90,14 @@ class OrdersPage(BasePage):
         If toggle is turned off - pass
         :return:
         """
+        element_color = self.driver.find_element_by_xpath(
+            self.PUBLIC_SELECTION_PAGE_TOGGLE).value_of_css_property('background-color')
+        hex = Color.from_string(element_color).hex
         try:
-            self.click(self.PUBLIC_SELECTION_PAGE_TOGGLE_TURN_OFF, timeout=1)
+            if hex == '#008000':  # Green
+                self.click(self.PUBLIC_SELECTION_PAGE_TOGGLE, timeout=1)
         except TimeoutException:
-            print('Verify toggle works')
-
-
+            pass
 
 
 
